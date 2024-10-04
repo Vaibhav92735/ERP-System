@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/navigation'; // For Next.js 13+ routing
 import { ref, get, database } from "../firebase/config";
+import ProfilePage from "@/app/teacher_profile/page";
 
 const LoginForm = ({ userType, darkMode }) => {
   const [username, setUsername] = useState("");
@@ -26,8 +27,13 @@ const LoginForm = ({ userType, darkMode }) => {
 
         if (isValidUser) {
           console.log("Logged in successfully");
-          // Redirect to profile page with username as query
+          if( userType === "student") {
           router.push(`/profile?username=${username}`); // Pass username here
+          }
+          else
+          {
+            router.push(`/teacher_profile?username=${username}`);
+          }
         } else {
           setError("Invalid username or password.");
         }

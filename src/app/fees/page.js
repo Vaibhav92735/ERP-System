@@ -1,14 +1,14 @@
-"use client"; // Ensure it's a client component
+"use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation"; // New way of getting search params in Next.js 13+
-import { database, ref, get } from "../../firebase/config"; // Adjust the import according to your Firebase config file
+import { useSearchParams } from "next/navigation";
+import { database, ref, get } from "../../firebase/config";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 
 const FeesPage = () => {
   const searchParams = useSearchParams();
-  const username = searchParams.get("username"); // Extract the username from the URL
+  const username = searchParams.get("username");
 
   const [feeData, setFeeData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,12 +18,11 @@ const FeesPage = () => {
     if (username) {
       const feesRef = ref(database, `fees/${username}`);
 
-      // Fetch fee data from the database
       const fetchFeeData = async () => {
         try {
           const snapshot = await get(feesRef);
           if (snapshot.exists()) {
-            setFeeData(snapshot.val()); // Setting the fee data
+            setFeeData(snapshot.val());
           } else {
             setError("Fee details not found.");
           }
