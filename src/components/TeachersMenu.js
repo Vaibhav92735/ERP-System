@@ -38,8 +38,8 @@ const TeachersMenu = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/feedback?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                Feedback
+                            <Link href={`/grading?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                Grading
                             </Link>
                         </li>
                     </ul>

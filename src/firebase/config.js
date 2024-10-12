@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, get } from "firebase/database";
+import { getDatabase, ref, get, update, set, remove } from "firebase/database"; // Import 'update'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,11 +12,11 @@ const firebaseConfig = {
   messagingSenderId: "147232119371",
   appId: "1:147232119371:web:be99e7f5a525d087e24bce",
   measurementId: "G-PNXV23X1FY"
-};  
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-export { auth, database, signInWithEmailAndPassword, ref, get };
+export { auth, database, signInWithEmailAndPassword, ref, get, update, set, remove }; // Export 'update'

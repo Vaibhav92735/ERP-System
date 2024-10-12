@@ -18,31 +18,37 @@ const Menu = () => {
         <div className="relative">
             <button
                 onClick={toggleMenu}
-                className="flex items-center text-white bg-gray-800 p-2 rounded-md hover:bg-gray-700 focus:outline-none"
+                className="flex items-center text-[#FFF8E7] bg-[#5A4A3B] p-2 rounded-md hover:bg-[#7A6E5D] focus:outline-none transition-all duration-300"
             >
-                <FaBars className="h-5 w-5" /> {/* Menu icon */}
+                <FaBars className="h-6 w-6" /> {/* Menu icon */}
+                {/* <span className="ml-2 text-lg font-serif">Menu</span> */}
             </button>
 
             {isOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                    <ul className="flex flex-col">
+                <div className="absolute left-0 mt-2 w-56 bg-[#F1E0C5] border border-[#C0A383] rounded-md shadow-lg z-10 transition-opacity duration-500 ease-in-out">
+                    <ul className="flex flex-col font-serif text-[#5A4A3B]">
                         <li>
-                            <Link href={`/profile?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            <Link href={`/profile?username=${username}`} className="block px-4 py-3 hover:bg-[#EFEFE8] hover:text-[#000] transition-all duration-300">
                                 Profile
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/fees?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            <Link href={`/fees?username=${username}`} className="block px-4 py-3 hover:bg-[#EFEFE8] hover:text-[#000] transition-all duration-300">
                                 Fees
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/subjects?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            <Link href={`/registeredCourses?username=${username}`} className="block px-4 py-3 hover:bg-[#EFEFE8] hover:text-[#000] transition-all duration-300">
+                                Registered Courses
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/subjects?username=${username}`} className="block px-4 py-3 hover:bg-[#EFEFE8] hover:text-[#000] transition-all duration-300">
                                 Subjects
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/feedback?username=${username}`} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            <Link href={`/feedback?username=${username}`} className="block px-4 py-3 hover:bg-[#EFEFE8] hover:text-[#000] transition-all duration-300">
                                 Feedback
                             </Link>
                         </li>

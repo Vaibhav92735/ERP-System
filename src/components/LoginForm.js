@@ -1,4 +1,4 @@
-"use client"; // ensure it's a client component
+"use client"; // Ensure it's a client component
 
 import { useState } from "react";
 import { useRouter } from 'next/navigation'; // For Next.js 13+ routing
@@ -27,11 +27,9 @@ const LoginForm = ({ userType, darkMode }) => {
 
         if (isValidUser) {
           console.log("Logged in successfully");
-          if( userType === "student") {
-          router.push(`/profile?username=${username}`); // Pass username here
-          }
-          else
-          {
+          if (userType === "student") {
+            router.push(`/profile?username=${username}`); // Pass username here
+          } else {
             router.push(`/teacher_profile?username=${username}`);
           }
         } else {
@@ -47,32 +45,32 @@ const LoginForm = ({ userType, darkMode }) => {
 
   return (
     <form className="flex flex-col space-y-4">
-      <h2 className="text-lg font-semibold text-center">{`Login Form`}</h2>
+      <h2 className="text-lg font-serif font-semibold text-center">{`Login Form`}</h2>
       <div>
-        <label className="block mb-1">Username:</label>
+        <label className="block mb-1 font-serif">Username:</label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'border-gray-300'}`}
+          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-sepia-light border-brown-300 text-brown-900'}`}
           required
         />
       </div>
       <div>
-        <label className="block mb-1">Password:</label>
+        <label className="block mb-1 font-serif">Password:</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'border-gray-300'}`}
+          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-sepia-light border-brown-300 text-brown-900'}`}
           required
         />
       </div>
-      {error && <p className={`text-red-500 text-center`}>{error}</p>}
+      {error && <p className="text-red-500 text-center font-serif">{error}</p>}
       <button
         onClick={handleLogin}
         type="submit"
-        className={`py-2 rounded ${darkMode ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white`}
+        className={`py-2 rounded ${darkMode ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-900 hover:bg-blue-800'} text-white font-serif`}
       >
         Login
       </button>
