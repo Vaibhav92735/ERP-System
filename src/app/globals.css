@@ -86,7 +86,7 @@ button:hover {
 }
 
 .bg-parchment {
-  background-image: url('/path-to-your-parchment-image.jpg');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0rJh7Bp1jfmp44ojFIG_IcgMNTR5BSimMXQ&s');
   background-size: cover;
   background-position: center;
 }

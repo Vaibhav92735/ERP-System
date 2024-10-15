@@ -44,37 +44,46 @@ const LoginForm = ({ userType, darkMode }) => {
   };
 
   return (
-    <form className="flex flex-col space-y-4">
-      <h2 className="text-lg font-serif font-semibold text-center">{`Login Form`}</h2>
-      <div>
-        <label className="block mb-1 font-serif">Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-sepia-light border-brown-300 text-brown-900'}`}
-          required
-        />
-      </div>
-      <div>
-        <label className="block mb-1 font-serif">Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={`w-full p-2 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-sepia-light border-brown-300 text-brown-900'}`}
-          required
-        />
-      </div>
-      {error && <p className="text-red-500 text-center font-serif">{error}</p>}
-      <button
-        onClick={handleLogin}
-        type="submit"
-        className={`py-2 rounded ${darkMode ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-900 hover:bg-blue-800'} text-white font-serif`}
-      >
-        Login
-      </button>
-    </form>
+    <div>
+      <h3 className="text-center text-xl font-serif mb-4">
+        {userType === "student" ? "Student Login" : "Teacher Login"}
+      </h3>
+      
+      <form onSubmit={handleLogin} className="space-y-4">
+        <div>
+          <label className={`block text-sm font-serif mb-1 ${darkMode ? 'text-gray-200' : 'text-brown-900'}`}>
+            Username
+          </label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className={`w-full p-2 rounded-lg border ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white border-gray-300'} focus:outline-none focus:ring-2 ${darkMode ? 'focus:ring-yellow-400' : 'focus:ring-blue-500'} transition duration-300`}
+            required
+          />
+        </div>
+
+        <div>
+          <label className={`block text-sm font-serif mb-1 ${darkMode ? 'text-gray-200' : 'text-brown-900'}`}>
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={`w-full p-2 rounded-lg border ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white border-gray-300'} focus:outline-none focus:ring-2 ${darkMode ? 'focus:ring-yellow-400' : 'focus:ring-blue-500'} transition duration-300`}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className={`w-full py-2 rounded-lg font-serif transition duration-300 ${darkMode ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400' : 'bg-blue-900 text-white hover:bg-blue-800'} focus:outline-none`}
+        >
+          Log In
+        </button>
+      </form>
+    </div>
   );
 };
 
