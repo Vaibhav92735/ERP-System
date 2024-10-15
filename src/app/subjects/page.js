@@ -1,12 +1,12 @@
 "use client"; // Ensure client-side rendering
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ref, get, database } from "../../firebase/config";
 import Menu from "@/components/Menu";
 import Header from "@/components/Header";
 
-const SubjectsPage = () => {
+const SubjectsPageContent = () => {
   const searchParams = useSearchParams();
   const username = searchParams.get("username"); // Get username from URL
 
@@ -106,8 +106,8 @@ const SubjectsPage = () => {
     <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
       
       <Header />
-    <div className="min-h-screen bg-[#f9f6e8] p-8 flex flex-col items-center">
       <Menu />
+    <div className="min-h-screen bg-[#f9f6e8] p-8 flex flex-col items-center">
       <div className="max-w-5xl w-full bg-[#faf4d3] border border-[#d9c6a3] rounded-xl p-6 shadow-lg">
         <h1 className="text-3xl font-bold font-serif text-brown-800 text-center mb-8">Subjects and Grades</h1>
         
@@ -144,6 +144,20 @@ const SubjectsPage = () => {
     </div>
 
     </div>
+  );
+};
+
+// export default SubjectsPage;
+
+const SubjectsPage = () => {
+  return (
+      <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+          {/* <Header />
+          <Menu /> */}
+          <Suspense fallback={<div>Loading page...</div>}>
+              <SubjectsPageContent />
+          </Suspense>
+      </div>
   );
 };
 

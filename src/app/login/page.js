@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import LoginForm from "../../components/LoginForm";
 
-const LoginPage = ({ darkMode }) => {
+const LoginPageComponent = ({ darkMode }) => {
   const [selectedUserType, setSelectedUserType] = useState(null);
 
   return (
@@ -34,6 +34,18 @@ const LoginPage = ({ darkMode }) => {
         )}
       </div>
     </div>
+  );
+};
+
+const LoginPage = () => {
+  return (
+      <div className="bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+          {/* <Header />
+          <Menu /> */}
+          <Suspense fallback={<div>Loading page...</div>}>
+              <LoginPageComponent />
+          </Suspense>
+      </div>
   );
 };
 

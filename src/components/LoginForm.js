@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from 'next/navigation'; // For Next.js 13+ routing
 import { ref, get, database } from "../firebase/config";
-import ProfilePage from "@/app/teacher_profile/page";
 
 const LoginForm = ({ userType, darkMode }) => {
   const [username, setUsername] = useState("");

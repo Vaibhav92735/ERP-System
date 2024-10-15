@@ -1,13 +1,13 @@
 "use client"; // Ensure client-side rendering
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ref, get, update } from "firebase/database";
 import TeachersMenu from "@/components/TeachersMenu";
 import Header from "@/components/Header";
 import { database } from "../../firebase/config"; // Importing Firebase config
 
-const CoursesPage = () => {
+const CoursesPageContent = () => {
   const searchParams = useSearchParams();
   const username = searchParams.get("username"); // Get username from URL
 
@@ -149,6 +149,18 @@ const CoursesPage = () => {
         })}
       </div>
     </div>
+  );
+};
+
+const CoursesPage = () => {
+  return (
+      <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+          {/* <Header />
+          <Menu /> */}
+          <Suspense fallback={<div>Loading page...</div>}>
+              <CoursesPageContent />
+          </Suspense>
+      </div>
   );
 };
 

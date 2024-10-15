@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 import Profile from '../../components/Profile';
 import { ref, get, database } from '../../firebase/config';
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 
-const ProfilePage = () => {
+const ProfilePageContent = () => {
   const searchParams = useSearchParams();
   const username = searchParams.get('username');
 
@@ -66,6 +66,20 @@ const ProfilePage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// export default ProfilePage;
+
+const ProfilePage = () => {
+  return (
+      <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+          {/* <Header />
+          <Menu /> */}
+          <Suspense fallback={<div>Loading page...</div>}>
+              <ProfilePageContent />
+          </Suspense>
+      </div>
   );
 };
 

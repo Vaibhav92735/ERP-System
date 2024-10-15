@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { database, ref, get } from "../../firebase/config";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 
-const FeesPage = () => {
+const FeesPageContent = () => {
   const searchParams = useSearchParams();
   const username = searchParams.get("username");
 
@@ -63,6 +63,20 @@ const FeesPage = () => {
         <p className="text-center">No fee details available.</p>
       )}
     </div>
+  );
+};
+
+// export default FeesPage;
+
+const FeesPage = () => {
+  return (
+      <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+          {/* <Header />
+          <Menu /> */}
+          <Suspense fallback={<div>Loading page...</div>}>
+              <FeesPageContent />
+          </Suspense>
+      </div>
   );
 };
 

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { database, ref, get } from '@/firebase/config'; // Import Firebase functions
 import Header from '@/components/Header';
 import Menu from '@/components/Menu';
 
-const RegisteredCoursesPage = () => {
+const RegisteredCoursesPageContent = () => {
     const searchParams = useSearchParams();
     const username = searchParams.get('username'); // Get username from URL params
 
@@ -76,6 +76,18 @@ const RegisteredCoursesPage = () => {
                     <p className="text-center text-lg text-[#5b4636]">No courses registered this semester.</p>
                 )}
             </div>
+        </div>
+    );
+};
+
+const RegisteredCoursesPage = () => {
+    return (
+        <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+            {/* <Header />
+            <Menu /> */}
+            <Suspense fallback={<div>Loading page...</div>}>
+                <RegisteredCoursesPageContent />
+            </Suspense>
         </div>
     );
 };

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { database, ref, get, set, remove } from '@/firebase/config'; // Import Firebase functions
 import Header from '@/components/Header';
 import TeachersMenu from '@/components/TeachersMenu';
 
-const GradingPage = () => {
+const GradingPageContent = () => {
     const searchParams = useSearchParams();
     const teacherID = searchParams.get('username'); // Get teacher ID from URL params
 
@@ -156,4 +156,16 @@ const GradingPage = () => {
     );
 };
 
-export default GradingPage;
+const GradingPage = () => {
+    return (
+        <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+            {/* <Header />
+            <Menu /> */}
+            <Suspense fallback={<div>Loading page...</div>}>
+                <GradingPageContent />
+            </Suspense>
+        </div>
+    );
+  };
+  
+  export default GradingPage;
