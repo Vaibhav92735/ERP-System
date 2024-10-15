@@ -51,7 +51,7 @@ The frontend is developed using **Next.js**, providing a modern, responsive, and
 ## How to Access
 You can visit the live portal by clicking the link below:
 
-**[Access the ERP Portal](#)**
+**[Access the ERP Portal](https://erp-system-seven-chi.vercel.app/)**
 
 ---
 
