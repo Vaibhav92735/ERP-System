@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { ref, get, update, push } from "firebase/database";
+import { ref, get, update } from "firebase/database";
 import TeachersMenu from "@/components/TeachersMenu";
 import Header from "@/components/Header";
 import { database } from "../../firebase/config"; // Importing Firebase config
@@ -96,59 +96,58 @@ const CoursesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div>
+
         <Header />
+      <div className="min-h-screen bg-[#f5f0e1] p-8 font-serif text-[#4b3e3e]">
         <TeachersMenu />
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Courses</h1>
+        <h1 className="text-5xl font-bold text-center mb-6">Courses</h1>
 
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-700">Add New Course</h2>
-        <div className="flex gap-2 mt-2">
-          <input
-            type="text"
-            value={newCourse}
-            onChange={(e) => setNewCourse(e.target.value)}
-            placeholder="Enter course name"
-            className="p-2 border rounded-md w-full"
-          />
-          <button
-            onClick={addCourse}
-            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >
-            Add Course
-          </button>
-        </div>
-      </div>
-
-      {Object.keys(courses).map((course) => {
-        const { parameterAverages, overallAvgRating } = calculateAverageRating(courses[course]);
-        return (
-          <div key={course} className="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">{course}</h2>
-            <table className="min-w-full table-auto border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border px-4 py-2 text-left text-sm font-medium text-gray-700">
-                    Parameter
-                  </th>
-                  <th className="border px-4 py-2 text-left text-sm font-medium text-gray-700">
-                    Average Rating
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(parameterAverages).map(([parameter, avgRating], idx) => (
-                  <tr key={idx} className="bg-white hover:bg-gray-50">
-                    <td className="border px-4 py-2 text-sm text-gray-700">{parameter}</td>
-                    <td className="border px-4 py-2 text-sm text-gray-700">{avgRating}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="text-gray-800 font-semibold mt-4">Overall Average Rating: {overallAvgRating}</p>
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold">Add New Course</h2>
+          <div className="flex gap-2 mt-2">
+            <input
+              type="text"
+              value={newCourse}
+              onChange={(e) => setNewCourse(e.target.value)}
+              placeholder="Enter course name"
+              className="p-2 border border-[#bfb8a5] bg-[#f5f0e1] rounded-md w-full shadow-inner"
+            />
+            <button
+              onClick={addCourse}
+              className="bg-[#7b7061] text-white p-2 rounded-md hover:bg-[#6b5d48] transition duration-200"
+            >
+              Add Course
+            </button>
           </div>
-        );
-      })}
+        </div>
+
+        {Object.keys(courses).map((course) => {
+          const { parameterAverages, overallAvgRating } = calculateAverageRating(courses[course]);
+          return (
+            <div key={course} className="bg-[#faf6f1] rounded-lg border border-[#bfb8a5] shadow-lg p-6 mb-8">
+              <h2 className="text-3xl font-semibold mb-4 underline">{course}</h2>
+              <table className="min-w-full table-auto border-collapse text-left">
+                <thead>
+                  <tr className="bg-[#eae0d5] text-lg">
+                    <th className="border border-[#bfb8a5] px-4 py-2">Parameter</th>
+                    <th className="border border-[#bfb8a5] px-4 py-2">Average Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(parameterAverages).map(([parameter, avgRating], idx) => (
+                    <tr key={idx} className="bg-[#faf6f1] hover:bg-[#eae0d5] transition duration-150">
+                      <td className="border border-[#bfb8a5] px-4 py-2">{parameter}</td>
+                      <td className="border border-[#bfb8a5] px-4 py-2">{avgRating}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="text-lg font-semibold mt-4">Overall Average Rating: {overallAvgRating}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

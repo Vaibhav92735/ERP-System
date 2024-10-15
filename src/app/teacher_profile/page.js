@@ -56,14 +56,19 @@ const ProfilePage = () => {
 
   return (
     <div>
+
       <Header />
-      <TeachersMenu /> {/* Include the Menu component here */}
-      {/* <Menu /> */}
-      {profileData ? (
-        <Profile profile={profileData} />
-      ) : (
-        <p className="text-center">Please log in to view your profile.</p>
-      )}
+      <div className="bg-[#F7F1E3] min-h-screen p-8 font-serif">
+        <TeachersMenu />
+        <div className="bg-[#F1E0C5] max-w-4xl mx-auto p-8 mt-10 shadow-lg rounded-lg border border-gray-400">
+          <h1 className="text-3xl font-bold text-center mb-6 text-[#5A4A3B]">Student Profile</h1>
+          {profileData ? (
+            <Profile profile={profileData} />
+          ) : (
+            <p className="text-center text-[#5A4A3B]">Please log in to view your profile.</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
