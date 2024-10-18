@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { database, ref, get } from '@/firebase/config'; // Import Firebase functions
 import Header from '@/components/Header';
 import Menu from '@/components/Menu';
+import NavbarComp from '@/components/Navbar';
 
 const RegisteredCoursesPageContent = () => {
     const searchParams = useSearchParams();
@@ -57,7 +58,7 @@ const RegisteredCoursesPageContent = () => {
     return (
         <div className="relative h-screen w-full bg-parchment bg-no-repeat bg-cover">
             <Header />
-            <Menu />
+            <NavbarComp />
             <div className="p-8 h-full flex flex-col items-center justify-center">
                 <h1 className="text-5xl font-serif text-center mb-10 text-brown-800" style={{ fontFamily: "'Playfair Display', serif" }}>
                     Registered Courses for {username}

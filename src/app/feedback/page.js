@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { database, ref, get, set } from '@/firebase/config';
 import Header from '@/components/Header';
 import Menu from '@/components/Menu';
+import NavbarComp from '@/components/Navbar';
 
 const FeedbackPageContent = () => {
     const searchParams = useSearchParams();
@@ -94,7 +95,7 @@ const FeedbackPageContent = () => {
     return (
         <div>
             <Header />
-            <Menu />
+            <NavbarComp />
         <div className="min-h-screen bg-[#f9f6e8] p-8 flex flex-col items-center">
             <div className="max-w-5xl w-full bg-[#faf4d3] border border-[#d9c6a3] rounded-xl p-6 shadow-lg">
                 <h1 className="text-3xl font-bold font-serif text-brown-800 text-center mb-8">Provide Feedback</h1>

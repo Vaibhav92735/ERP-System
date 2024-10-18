@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { database, ref, get } from "../../firebase/config";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
+import NavbarComp from "@/components/Navbar";
 
 const FeesPageContent = () => {
   const searchParams = useSearchParams();
@@ -52,7 +53,7 @@ const FeesPageContent = () => {
   return (
     <div className="container mx-auto p-4">
         <Header />
-        <Menu />
+        <NavbarComp />
       <h2 className="text-2xl font-bold mb-4">Fee Details for {username}</h2>
       {feeData ? (
         <div>
@@ -71,8 +72,6 @@ const FeesPageContent = () => {
 const FeesPage = () => {
   return (
       <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <FeesPageContent />
           </Suspense>

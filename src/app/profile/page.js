@@ -5,7 +5,10 @@ import { useSearchParams } from 'next/navigation';
 import Profile from '../../components/Profile';
 import { ref, get, database } from '../../firebase/config';
 import Header from "@/components/Header";
-import Menu from "@/components/Menu";
+import Lottie from "lottie-react";
+import animationData from "../../public/Profile.json";
+import NavbarComp from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const ProfilePageContent = () => {
   const searchParams = useSearchParams();
@@ -54,8 +57,19 @@ const ProfilePageContent = () => {
     <div>
 
       <Header />
-      <div className="bg-[#F7F1E3] min-h-screen p-8 font-serif">
-        <Menu />
+      <NavbarComp />
+      <div className="bg-[#F7F1E3] min-h-screen p-32 font-serif">
+        <div className="flex flex-row items-center justify-center h-screen">
+
+        <div className="w-1/2 flex justify-center">
+          <Lottie
+            animationData={animationData}
+            loop={true}
+            className="w-1/2 h-3/4 object-cover"
+            />
+        </div>
+
+        <div className="w-1/2">
         <div className="bg-[#F1E0C5] max-w-4xl mx-auto p-8 mt-10 shadow-lg rounded-lg border border-gray-400">
           <h1 className="text-3xl font-bold text-center mb-6 text-[#5A4A3B]">Student Profile</h1>
           {profileData ? (
@@ -64,18 +78,17 @@ const ProfilePageContent = () => {
             <p className="text-center text-[#5A4A3B]">Please log in to view your profile.</p>
           )}
         </div>
+        </div>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
 
-// export default ProfilePage;
-
 const ProfilePage = () => {
   return (
       <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <ProfilePageContent />
           </Suspense>
