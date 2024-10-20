@@ -4,7 +4,8 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { database, ref, get, set, remove } from '@/firebase/config'; // Import Firebase functions
 import Header from '@/components/Header';
-import TeachersMenu from '@/components/TeachersMenu';
+import Footer from '@/components/Footer';
+import TeacherNav from '@/components/TeacherNav';
 
 const GradingPageContent = () => {
     const searchParams = useSearchParams();
@@ -84,8 +85,8 @@ const GradingPageContent = () => {
     return (
         <div>
             <Header />
+            <TeacherNav />
             <div className="grading-page p-10 bg-gray-100 border border-gray-300 rounded-lg shadow-lg" style={{ fontFamily: 'Georgia, serif', lineHeight: '1.8', backgroundImage: 'url(/images/paper-texture.jpg)', backgroundSize: 'cover' }}>
-                <TeachersMenu />
                 <h1 className="text-3xl text-center font-bold mb-4" style={{ textDecoration: 'underline', color: '#4B3F30' }}>
                     Grading Page for Teacher: {teacherID}
                 </h1>
@@ -152,6 +153,7 @@ const GradingPageContent = () => {
                     <p className="text-gray-700 font-medium">No students to grade for this course.</p>
                 )}
             </div>
+            <Footer />
         </div>
     );
 };
@@ -159,8 +161,6 @@ const GradingPageContent = () => {
 const GradingPage = () => {
     return (
         <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-            {/* <Header />
-            <Menu /> */}
             <Suspense fallback={<div>Loading page...</div>}>
                 <GradingPageContent />
             </Suspense>

@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ref, get, database } from "../../firebase/config";
-import Menu from "@/components/Menu";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NavbarComp from "@/components/Navbar";
 
@@ -143,18 +143,14 @@ const SubjectsPageContent = () => {
         </div>
       </div>
     </div>
-
+        <Footer />
     </div>
   );
 };
 
-// export default SubjectsPage;
-
 const SubjectsPage = () => {
   return (
       <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <SubjectsPageContent />
           </Suspense>

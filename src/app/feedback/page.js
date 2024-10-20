@@ -4,8 +4,8 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { database, ref, get, set } from '@/firebase/config';
 import Header from '@/components/Header';
-import Menu from '@/components/Menu';
 import NavbarComp from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const FeedbackPageContent = () => {
     const searchParams = useSearchParams();
@@ -96,72 +96,71 @@ const FeedbackPageContent = () => {
         <div>
             <Header />
             <NavbarComp />
-        <div className="min-h-screen bg-[#f9f6e8] p-8 flex flex-col items-center">
-            <div className="max-w-5xl w-full bg-[#faf4d3] border border-[#d9c6a3] rounded-xl p-6 shadow-lg">
-                <h1 className="text-3xl font-bold font-serif text-brown-800 text-center mb-8">Provide Feedback</h1>
+            <div className="min-h-screen bg-[#f9f6e8] p-8 flex flex-col items-center">
+                <div className="max-w-5xl w-full bg-[#faf4d3] border border-[#d9c6a3] rounded-xl p-6 shadow-lg">
+                    <h1 className="text-3xl font-bold font-serif text-brown-800 text-center mb-8">Provide Feedback</h1>
 
-                {courses.length === 0 ? (
-                    <p className="text-center text-gray-500 font-serif">Loading courses...</p>
-                ) : (
-                    <div className="mb-6">
-                        <label className="block font-semibold font-serif text-brown-800 mb-2">Select Course:</label>
-                        <select
-                            className="w-full p-3 border border-[#d9c6a3] rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-brown-300"
-                            onChange={(e) => setSelectedCourse(courses[e.target.value])}
+                    {courses.length === 0 ? (
+                        <p className="text-center text-gray-500 font-serif">Loading courses...</p>
+                    ) : (
+                        <div className="mb-6">
+                            <label className="block font-semibold font-serif text-brown-800 mb-2">Select Course:</label>
+                            <select
+                                className="w-full p-3 border border-[#d9c6a3] rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-brown-300"
+                                onChange={(e) => setSelectedCourse(courses[e.target.value])}
                             >
-                            {courses.map((course, index) => (
-                                <option key={index} value={index}>
-                                    {course.courseName}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                )}
+                                {courses.map((course, index) => (
+                                    <option key={index} value={index}>
+                                        {course.courseName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
 
-                {feedbackCategories.length === 0 ? (
-                    <p className="text-center text-gray-500 font-serif">Loading feedback categories...</p>
-                ) : (
-                    <form className="mt-4">
-                        {feedbackCategories.map((category) => (
-                            <div key={category} className="mb-6">
-                                <label className="block font-semibold font-serif text-brown-800 mb-2">{category}</label>
-                                <div className="flex justify-between">
-                                    {[1, 2, 3, 4, 5].map((rating) => (
-                                        <label key={rating} className="flex items-center">
-                                            <input
-                                                type="radio"
-                                                name={category}
-                                                value={rating}
-                                                onChange={() => handleRatingChange(category, rating)}
-                                                className="mr-2 accent-brown-600"
+                    {feedbackCategories.length === 0 ? (
+                        <p className="text-center text-gray-500 font-serif">Loading feedback categories...</p>
+                    ) : (
+                        <form className="mt-4">
+                            {feedbackCategories.map((category) => (
+                                <div key={category} className="mb-6">
+                                    <label className="block font-semibold font-serif text-brown-800 mb-2">{category}</label>
+                                    <div className="flex justify-between">
+                                        {[1, 2, 3, 4, 5].map((rating) => (
+                                            <label key={rating} className="flex items-center">
+                                                <input
+                                                    type="radio"
+                                                    name={category}
+                                                    value={rating}
+                                                    onChange={() => handleRatingChange(category, rating)}
+                                                    className="mr-2 accent-brown-600"
                                                 />
-                                            {rating} Star
-                                        </label>
-                                    ))}
+                                                {rating} Star
+                                            </label>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                        <button
-                            type="button"
-                            onClick={handleSubmit}
-                            className="mt-6 bg-brown-600 text-white p-3 w-full rounded-lg shadow hover:bg-brown-700"
+                            <button
+                                type="button"
+                                onClick={handleSubmit}
+                                className="mt-6 bg-brown-600 text-white p-3 w-full rounded-lg shadow hover:bg-brown-700"
                             >
-                            Submit Feedback
-                        </button>
-                    </form>
-                )}
+                                Submit Feedback
+                            </button>
+                        </form>
+                    )}
+                </div>
             </div>
+            <Footer />
         </div>
-</div>
     );
 };
 
 const FeedbackPage = () => {
     return (
         <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-            {/* <Header />
-            <Menu /> */}
             <Suspense fallback={<div>Loading page...</div>}>
                 <FeedbackPageContent />
             </Suspense>

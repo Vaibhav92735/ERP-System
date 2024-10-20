@@ -6,6 +6,8 @@ import { ref, get, update } from "firebase/database";
 import TeachersMenu from "@/components/TeachersMenu";
 import Header from "@/components/Header";
 import { database } from "../../firebase/config"; // Importing Firebase config
+import Footer from "@/components/Footer";
+import TeacherNav from "@/components/TeacherNav";
 
 const CoursesPageContent = () => {
   const searchParams = useSearchParams();
@@ -99,8 +101,8 @@ const CoursesPageContent = () => {
     <div>
 
         <Header />
+        <TeacherNav />
       <div className="min-h-screen bg-[#f5f0e1] p-8 font-serif text-[#4b3e3e]">
-        <TeachersMenu />
         <h1 className="text-5xl font-bold text-center mb-6">Courses</h1>
 
         <div className="mb-8">
@@ -148,6 +150,7 @@ const CoursesPageContent = () => {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 };
@@ -155,8 +158,6 @@ const CoursesPageContent = () => {
 const CoursesPage = () => {
   return (
       <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <CoursesPageContent />
           </Suspense>

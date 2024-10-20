@@ -17,7 +17,7 @@ import {
 import { AcmeLogo } from "./AcmeLogo.jsx";
 import { FaSignOutAlt } from 'react-icons/fa'; // Logout icon
 
-export default function NavbarComp() {
+export default function TeacherNav() {
   const [isOpen, setIsOpen] = useState(false); // State to manage menu visibility
   const searchParams = useSearchParams();
   const username = searchParams.get('username'); // Get username from the URL
@@ -42,7 +42,7 @@ export default function NavbarComp() {
         <NavbarItem>
           <Link
             color="primary"
-            href={`/profile?username=${username}`}
+            href={`/teacher_profile?username=${username}`}
             className="hover:text-[#8B5A2B] hover:scale-150 transition duration-300 ease-in-out"
           >
             Profile
@@ -51,37 +51,19 @@ export default function NavbarComp() {
         <NavbarItem>
           <Link
             color="primary"
-            href={`/fees?username=${username}`}
+            href={`/courses?username=${username}`}
             className="hover:text-[#8B5A2B] hover:scale-110 transition duration-300 ease-in-out"
           >
-            Fees
+            Courses
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link
             color="primary"
-            href={`/registeredCourses?username=${username}`}
+            href={`/grading?username=${username}`}
             className="hover:text-[#8B5A2B] hover:scale-110 transition duration-300 ease-in-out"
           >
-            Registered Courses
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            color="primary"
-            href={`/subjects?username=${username}`}
-            className="hover:text-[#8B5A2B] hover:scale-110 transition duration-300 ease-in-out"
-          >
-            Subjects
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            color="primary"
-            href={`/feedback?username=${username}`}
-            className="hover:text-[#8B5A2B] hover:scale-110 transition duration-300 ease-in-out"
-          >
-            Feedback
+            Grading
           </Link>
         </NavbarItem>
       </NavbarContent>

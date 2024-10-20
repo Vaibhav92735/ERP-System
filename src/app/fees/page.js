@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { database, ref, get } from "../../firebase/config";
 import Header from "@/components/Header";
-import Menu from "@/components/Menu";
+import Footer from "@/components/Footer";
 import NavbarComp from "@/components/Navbar";
 
 const FeesPageContent = () => {
@@ -51,31 +51,33 @@ const FeesPageContent = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div>
         <Header />
         <NavbarComp />
-      <h2 className="text-2xl font-bold mb-4">Fee Details for {username}</h2>
-      {feeData ? (
-        <div>
-          <p className="mb-2"><strong>Total Paid:</strong> {feeData['paid']}</p>
-          <p><strong>Dues:</strong> {feeData.dues}</p>
-        </div>
-      ) : (
-        <p className="text-center">No fee details available.</p>
-      )}
+
+      <div className="container mx-auto p-40">
+        <h2 className="text-2xl font-bold mb-4">Fee Details for {username}</h2>
+        {feeData ? (
+          <div>
+            <p className="mb-2"><strong>Total Paid:</strong> {feeData['paid']}</p>
+            <p><strong>Dues:</strong> {feeData.dues}</p>
+          </div>
+        ) : (
+          <p className="text-center">No fee details available.</p>
+        )}
+      </div>
+        <Footer />
     </div>
   );
 };
 
-// export default FeesPage;
-
 const FeesPage = () => {
   return (
-      <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          <Suspense fallback={<div>Loading page...</div>}>
-              <FeesPageContent />
-          </Suspense>
-      </div>
+    <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
+      <Suspense fallback={<div>Loading page...</div>}>
+        <FeesPageContent />
+      </Suspense>
+    </div>
   );
 };
 

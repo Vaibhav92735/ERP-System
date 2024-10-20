@@ -40,8 +40,6 @@ const LoginPageComponent = ({ darkMode }) => {
 const LoginPage = () => {
   return (
       <div className="bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <LoginPageComponent />
           </Suspense>

@@ -1,14 +1,12 @@
 "use client"; // Ensure it's a client component
 
 import { useEffect, useState, Suspense } from "react";
-import { useSearchParams } from 'next/navigation'; // New way of getting search params in Next.js 13+
-// import Profile from '../../components/Profile';
+import { useSearchParams } from 'next/navigation';
 import Profile from "@/components/TeacherProfile";
 import { ref, get, database } from '../../firebase/config';
 import Header from "@/components/Header";
-// import teachersMenu from "@/components/teachersMenu"; // Import the Menu component\
-import TeachersMenu from "@/components/TeachersMenu";
-// import Menu from "@/components/Menu";
+import Footer from "@/components/Footer";
+import TeacherNav from "@/components/TeacherNav";
 
 const ProfilePageContent = () => {
   const searchParams = useSearchParams();
@@ -58,8 +56,8 @@ const ProfilePageContent = () => {
     <div>
 
       <Header />
+      <TeacherNav />
       <div className="bg-[#F7F1E3] min-h-screen p-8 font-serif">
-        <TeachersMenu />
         <div className="bg-[#F1E0C5] max-w-4xl mx-auto p-8 mt-10 shadow-lg rounded-lg border border-gray-400">
           <h1 className="text-3xl font-bold text-center mb-6 text-[#5A4A3B]">Student Profile</h1>
           {profileData ? (
@@ -69,6 +67,7 @@ const ProfilePageContent = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
@@ -78,8 +77,6 @@ const ProfilePageContent = () => {
 const ProfilePage = () => {
   return (
       <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-          {/* <Header />
-          <Menu /> */}
           <Suspense fallback={<div>Loading page...</div>}>
               <ProfilePageContent />
           </Suspense>

@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { database, ref, get } from '@/firebase/config'; // Import Firebase functions
 import Header from '@/components/Header';
-import Menu from '@/components/Menu';
+import Footer from '@/components/Footer';
 import NavbarComp from '@/components/Navbar';
 
 const RegisteredCoursesPageContent = () => {
@@ -77,6 +77,7 @@ const RegisteredCoursesPageContent = () => {
                     <p className="text-center text-lg text-[#5b4636]">No courses registered this semester.</p>
                 )}
             </div>
+            <Footer />
         </div>
     );
 };
@@ -84,8 +85,6 @@ const RegisteredCoursesPageContent = () => {
 const RegisteredCoursesPage = () => {
     return (
         <div className="relative h-screen bg-[#f9f6e8] w-full bg-parchment bg-no-repeat bg-cover">
-            {/* <Header />
-            <Menu /> */}
             <Suspense fallback={<div>Loading page...</div>}>
                 <RegisteredCoursesPageContent />
             </Suspense>
