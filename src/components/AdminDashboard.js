@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import StudentPage from "./StudentPage";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("students");
@@ -18,10 +19,6 @@ const AdminDashboard = () => {
       </div>
     </div>
   );
-};
-
-const StudentPage = () => {
-  return <h2>Manage Students</h2>;  // Add your student management features here
 };
 
 const TeacherPage = () => {
