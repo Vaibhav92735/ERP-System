@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getDatabase, ref, get, update, set, remove } from "firebase/database"; // Import 'update'
 
 // Your web app's Firebase configuration
@@ -18,5 +18,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
+const provider = new GoogleAuthProvider();
 
-export { auth, database, signInWithEmailAndPassword, ref, get, update, set, remove }; // Export 'update'
+const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+
+export { auth, database, signInWithEmailAndPassword, signInWithGoogle, ref, get, update, set, remove }; // Export 'update'

@@ -27,9 +27,9 @@ const LoginForm = ({ userType, darkMode }) => {
         if (isValidUser) {
           console.log("Logged in successfully");
           if (userType === "student") {
-            router.push(`/profile?username=${username}`); // Pass username here
+            router.push(`/studentPage?username=${username}`); // Pass username here
           } else {
-            router.push(`/teacher_profile?username=${username}`);
+            router.push(`/teachersPage?username=${username}`);
           }
         } else {
           setError("Invalid username or password.");
