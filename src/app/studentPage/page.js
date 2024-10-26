@@ -8,6 +8,7 @@ import Fees from '../../components/Fees';
 import RegisteredCoursesComponent from '../../components/RegisteredCoursesComponent';
 import Subjects from '../../components/Subjects';
 import FeedbackPageContent from '../../components/Feedback';
+import StudentAttendance from "@/components/StudentAttendance";
 import NavbarComp from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,6 +28,8 @@ const StudentPageComponent = () => {
         return <Fees username={username} />;
       case "Registered Courses":
         return <RegisteredCoursesComponent username={username} />;
+        case "Attendance":
+          return <StudentAttendance username={username} />;
       case "Subjects":
         return <Subjects username={username} />;
       case "Feedback":

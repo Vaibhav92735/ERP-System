@@ -62,6 +62,7 @@ import Profile from '../../components/TeachersProfile';
 import Courses from '../../components/Courses';
 import Grading from '../../components/Grading';
 import NavbarComp from "@/components/TeacherNav";
+import TeacherAttendance from "@/components/TeacherAttendance";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Suspense } from "react";
@@ -79,6 +80,8 @@ const TeachersPageComponent = () => {
         return <Courses username={username} />;
       case "Grading":
         return <Grading username={username} />;
+      case "Attendance":
+        return <TeacherAttendance username={username} />
       default:
         return <Profile username={username} />;
     }

@@ -13,8 +13,8 @@ const StudentAttendance = () => {
 
     useEffect(() => {
         const fetchAttendance = () => {
-            const attendanceRef = ref(database, `course-attendance`);
-            
+            const attendanceRef = ref(database, `attendance`);
+
             onValue(attendanceRef, (snapshot) => {
                 if (snapshot.exists()) {
                     const attendanceData = snapshot.val();
@@ -56,26 +56,30 @@ const StudentAttendance = () => {
     }, [studentUsername]);
 
     return (
-        <div className="p-6 bg-parchment">
+        <div className="p-6 bg-yellow-50 border border-yellow-200 rounded-md shadow-md">
             <h2 className="text-2xl font-bold mb-4">Attendance History</h2>
 
             {Object.keys(attendancePercentages).map((courseName) => (
                 <div key={courseName} className="mb-6">
                     <h3 className="text-xl font-semibold">{courseName}</h3>
-                    <p>Attendance Percentage: {attendancePercentages[courseName].toFixed(2)}%</p>
+                    <p className="text-gray-700">
+                        Attendance Percentage: <span className="font-bold">{attendancePercentages[courseName].toFixed(2)}%</span>
+                    </p>
                 </div>
             ))}
 
             <h3 className="text-xl font-bold mb-4">Detailed Attendance Records</h3>
             {attendanceRecords.length === 0 ? (
-                <p>No attendance records found.</p>
+                <p className="text-gray-500">No attendance records found.</p>
             ) : (
                 <ul>
                     {attendanceRecords.map((record, index) => (
-                        <li key={index} className="mb-4 p-4 border rounded">
+                        <li key={index} className="mb-4 p-4 border border-gray-300 rounded bg-white shadow-sm">
                             <p><strong>Course:</strong> {record.courseName}</p>
                             <p><strong>Date:</strong> {record.date}</p>
-                            <p><strong>Status:</strong> {record.isPresent ? 'Present' : 'Absent'}</p>
+                            <p><strong>Status:</strong> <span className={record.isPresent ? 'text-green-600' : 'text-red-600'}>
+                                {record.isPresent ? 'Present' : 'Absent'}
+                            </span></p>
                         </li>
                     ))}
                 </ul>

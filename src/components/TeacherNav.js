@@ -22,7 +22,7 @@ export default function NavbarComp({ setActiveTab }) {
   const username = searchParams.get('username'); // Get username from the URL
 
   // Define tab names to render in the navbar
-  const tabs = ["Profile", "Courses", "Grading"];
+  const tabs = ["Profile", "Courses", "Grading", "Attendance"];
 
   return (
     <Navbar

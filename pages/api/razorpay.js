@@ -6,8 +6,8 @@ export default async function handler(req, res) {
 
     try {
       const instance = new Razorpay({
-        key_id: rzp_test_8YlkRAtlW7b1zk,
-        key_secret: xsWDOt4C1tpJXmL7nJBzDrf2,
+        key_id: yourKeyID,
+        key_secret: yourSecretKey,
       });
 
       const order = await instance.orders.create({
