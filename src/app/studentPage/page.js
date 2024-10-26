@@ -12,6 +12,7 @@ import NavbarComp from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Suspense } from "react";
+import StudentRequests from "@/components/StudentRequests";
 
 const StudentPageComponent = () => {
   const searchParams = useSearchParams();
@@ -30,6 +31,8 @@ const StudentPageComponent = () => {
         return <Subjects username={username} />;
       case "Feedback":
         return <FeedbackPageContent username={username} />;
+      case "Student Requests":
+        return <StudentRequests username={username} />;
       default:
         return <Profile username={username} />;
     }

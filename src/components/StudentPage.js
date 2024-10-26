@@ -7,6 +7,7 @@ import FeeManagement from "./features/FeeManagement";
 import Communication from "./features/Communication";
 import PerformanceAnalytics from "./features/PerformanceAnalytics";
 import FeedbackGrievances from "./features/FeedbackGrievances";
+import Requests from "./features/Requests";
 
 const StudentPage = () => {
   const [selectedFeature, setSelectedFeature] = useState("profile");
@@ -28,6 +29,7 @@ const StudentPage = () => {
         <button onClick={() => handleSelectFeature("communication")}>Communication</button>
         <button onClick={() => handleSelectFeature("performance")}>Performance Analytics</button>
         <button onClick={() => handleSelectFeature("feedback")}>Feedback & Grievances</button>
+        <button onClick={() => handleSelectFeature("requests")}>Requests</button>
       </div>
 
       <div className="p-4 rounded-lg shadow-md bg-white">
@@ -39,6 +41,7 @@ const StudentPage = () => {
         {selectedFeature === "communication" && <Communication />}
         {selectedFeature === "performance" && <PerformanceAnalytics />}
         {selectedFeature === "feedback" && <FeedbackGrievances />}
+        {selectedFeature === "requests" && <Requests />}
       </div>
     </div>
   );

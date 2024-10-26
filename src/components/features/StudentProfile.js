@@ -63,6 +63,7 @@ const StudentProfiles = () => {
       roll_no: "",
       name: "",
       email: "",
+      year: "",
       address: "",
       cgpa: "",
       degree: "",
@@ -128,6 +129,14 @@ const StudentProfiles = () => {
             name="email"
             placeholder="Email"
             value={newStudent.email}
+            onChange={handleNewStudentChange}
+            className="border p-2"
+          />
+          <input
+            type="year"
+            name="year"
+            placeholder="Year"
+            value={newStudent.year}
             onChange={handleNewStudentChange}
             className="border p-2"
           />
@@ -252,6 +261,7 @@ const StudentProfiles = () => {
               <>
                 <p><strong>Name:</strong> {student.name || "N/A"}</p>
                 <p><strong>Email:</strong> {student.email || "N/A"}</p>
+                <p><strong>Year:</strong> {student.year || "N/A"}</p>
                 <p><strong>Address:</strong> {student.address || "N/A"}</p>
                 <p><strong>CGPA:</strong> {student.cgpa || "N/A"}</p>
                 <p><strong>Degree:</strong> {student.degree || "N/A"}</p>
