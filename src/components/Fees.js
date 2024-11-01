@@ -8,7 +8,7 @@ import { database, ref, get } from "../firebase/config";
 
 const Fees = () => {
   const searchParams = useSearchParams();
-  const username = searchParams.get("username");
+  const username = atob(searchParams.get("username"));
 
   const [feeData, setFeeData] = useState(null);
   const [loading, setLoading] = useState(true);

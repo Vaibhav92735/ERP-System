@@ -28,7 +28,6 @@ const StudentProfiles = () => {
         const snapshot = await get(studentsRef);
         if (snapshot.exists()) {
           const data = snapshot.val();
-          console.log(data);
           const studentsArray = Object.keys(data).map((rollNo) => ({
             rollNo,
             ...data[rollNo],

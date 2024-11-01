@@ -8,7 +8,7 @@ import animationData from "../public/Feedback.json"
 
 const FeedbackPageContent = () => {
     const searchParams = useSearchParams();
-    const username = searchParams.get('username'); // Get student username from URL params
+    const username = atob(searchParams.get('username')); // Get student username from URL params
 
     const [courses, setCourses] = useState([]); // List of courses
     const [selectedCourse, setSelectedCourse] = useState(null); // Selected course and teacher

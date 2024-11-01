@@ -9,7 +9,7 @@ import animationData from "../public/Profile.json";
 
 const ProfilePageContent = () => {
   const searchParams = useSearchParams();
-  const username = searchParams.get('username');
+  const username = atob(searchParams.get('username'));
 
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);

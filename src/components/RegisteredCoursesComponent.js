@@ -10,7 +10,7 @@ import animationData from "../public/Sub.json";
 
 const RegisteredCoursesComponent = () => {
     const searchParams = useSearchParams();
-    const username = searchParams.get('username');
+    const username = atob(searchParams.get('username'));
 
     const [registeredCourses, setRegisteredCourses] = useState([]);
     const [loading, setLoading] = useState(true);

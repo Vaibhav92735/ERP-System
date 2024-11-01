@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import StudentPage from "./StudentPage";
+import TeachersPage from "./TeachersPage";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("students");
@@ -15,14 +16,10 @@ const AdminDashboard = () => {
 
       <div style={{ marginTop: "20px" }}>
         {activeTab === "students" && <StudentPage />}
-        {activeTab === "teachers" && <TeacherPage />}
+        {activeTab === "teachers" && <TeachersPage />}
       </div>
     </div>
   );
-};
-
-const TeacherPage = () => {
-  return <h2>Manage Teachers</h2>;  // Add your teacher management features here
 };
 
 export default AdminDashboard;

@@ -6,7 +6,7 @@ import { database, ref, set, onValue } from '@/firebase/config';
 
 const StudentRequests = () => {
     const searchParams = useSearchParams();
-    const username = searchParams.get('username'); // Get student username from URL params
+    const username = atob(searchParams.get('username')); // Get student username from URL params
 
     const [requestType, setRequestType] = useState('');
     const [details, setDetails] = useState({ reason: '', startDate: '', endDate: '', attachment: '' });

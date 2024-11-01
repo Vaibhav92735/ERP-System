@@ -1,14 +1,15 @@
-"use client"; // Ensure it's a client component
+"use client";
 
 import { useState } from "react";
-import { useRouter } from 'next/navigation'; // For Next.js 13+ routing
+import { useRouter } from 'next/navigation';
 import { ref, get, database } from "../firebase/config";
+
 
 const LoginForm = ({ userType, darkMode }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const router = useRouter(); // Initialize the router
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const LoginForm = ({ userType, darkMode }) => {
         if (isValidUser) {
           console.log("Logged in successfully");
           if (userType === "student") {
-            router.push(`/studentPage?username=${username}`); // Pass username here
+            router.push(`/studentPage?username=${btoa(username)}`);
           } else {
             router.push(`/teachersPage?username=${username}`);
           }

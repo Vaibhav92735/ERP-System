@@ -17,7 +17,7 @@ import StudentRequests from "@/components/StudentRequests";
 
 const StudentPageComponent = () => {
   const searchParams = useSearchParams();
-  const username = searchParams.get('username');
+  const username = atob(searchParams.get('username'));
   const [activeTab, setActiveTab] = useState("Profile");
 
   const renderActiveTab = () => {

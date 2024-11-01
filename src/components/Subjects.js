@@ -17,7 +17,7 @@ import {
 
 const SubjectsComponent = () => {
   const searchParams = useSearchParams();
-  const username = searchParams.get("username"); // Get username from URL
+  const username = atob(searchParams.get("username")); // Get username from URL
 
   const [subjectsData, setSubjectsData] = useState({});
   const [sgpaData, setSgpaData] = useState([]); // Store SGPA data for graph
