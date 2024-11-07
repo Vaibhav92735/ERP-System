@@ -26,10 +26,13 @@ The portal is powered by **Firebase** as the backend database. The following tab
 - **Course Registration**: Students can register for courses each semester.
 - **Fee Payment**: Students can view their fee status and manage payments.
 - **View Grades**: Students can check grades after being evaluated.
+- **Attendance**: Students can check their attendance percentage in each of their courses.
+- **Requests**: Students can apply for leave, bonafide certicate etc.
 
 ### Teachers Section
 - **Course Management**: Teachers can manage the courses they teach and monitor enrolled students.
 - **Grading**: Teachers can grade students directly from the portal, simplifying the process.
+- **Attendance**: Teachers can mark studens attendance directly on the portal in all their registered courses.
 
 ---
 
