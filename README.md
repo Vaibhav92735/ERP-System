@@ -45,7 +45,7 @@ The frontend is developed using **Next.js**, providing a modern, responsive, and
 ---
 
 ## Technology Stack
-- **Frontend**: Next.js, Tailwind CSS
+- **Frontend**: Next.js, Tailwind CSS, Lottie
 - **Backend**: Firebase Realtime Database
 - **Authentication**: Firebase Auth for secure login and user management
 
