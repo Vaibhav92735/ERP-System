@@ -6,6 +6,7 @@ import Profile from './Profile';
 import { ref, get, database } from '../firebase/config';
 import Lottie from "lottie-react";
 import animationData from "../public/Profile.json";
+import { getDatabase } from "firebase/database";
 
 const ProfilePageContent = () => {
   const searchParams = useSearchParams();
@@ -17,10 +18,14 @@ const ProfilePageContent = () => {
 
   useEffect(() => {
     if (username) {
+
+      const db = getDatabase();
       const userRef = ref(database, `student-profile/${username}`);
 
       const fetchProfileData = async () => {
         try {
+          const btreeData = await get(ref(db, `student-profile/${username}`));
+          console.log(btreeData.val);
           const snapshot = await get(userRef);
           if (snapshot.exists()) {
             setProfileData(snapshot.val());

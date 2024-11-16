@@ -3,6 +3,7 @@
 import { useState } from "react";
 import GoogleSignInButton from "../../components/GoogleSignInButton";
 import AdminDashboard from "@/components/AdminDashboard";
+import Header from "@/components/Header";
 
 const AdminPage = () => {
   const [user, setUser] = useState();
@@ -28,8 +29,8 @@ const AdminPage = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-300">
-        <div className="w-full max-w-md p-8 rounded-lg shadow-lg bg-white">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <div className="w-full max-w-md p-8 rounded-md shadow-lg bg-parchment bg-slate-300">
+          <h2 className="text-3xl font-bold text-center bg-slate-400 text-gray-800 mb-6 rounded-md shadow-md">
             Admin Login
           </h2>
           <p className="text-center text-gray-600 mb-4">
@@ -53,9 +54,7 @@ const AdminPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-gray-800 text-white p-4">
-        <h1 className="text-2xl">Welcome, {user.displayName}</h1>
-      </header>
+      <Header />
       <main className="flex-1 p-6 bg-gray-100">
         <AdminDashboard />
       </main>
